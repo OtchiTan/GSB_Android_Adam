@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Code/Android/GSB_Android_Adam/app/src/main/res/layout/activity_ajout_echantillon.xml" value="0.16893115942028986" />
+        <entry key="..\:/Code/Android/GSB_Android_Adam/app/src/main/res/layout/activity_liste_echantillon.xml" value="0.16893115942028986" />
+        <entry key="..\:/Code/Android/GSB_Android_Adam/app/src/main/res/layout/activity_main.xml" value="0.16893115942028986" />
+        <entry key="..\:/Code/Android/GSB_Android_Adam/app/src/main/res/layout/activity_maj_echantillon.xml" value="0.16893115942028986" />
+        <entry key="..\:/Code/Android/GSB_Android_Adam/app/src/main/res/layout/activity_test.xml" value="0.16893115942028986" />
+        <entry key="..\:/Code/Android/GSB_Android_Adam/app/src/main/res/layout/layout_echantillon.xml" value="0.16893115942028986" />
+        <entry key="..\:/Code/Android/GSB_Android_Adam/app/src/main/res/menu/menu_accueil.xml" value="0.25416666666666665" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

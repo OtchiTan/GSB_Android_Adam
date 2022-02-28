@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_echantillons"
+        android:title="Échantillons">
+
+        <menu>
+            <item
+                android:id="@+id/menu_ajout"
+                android:title="Ajout"/>
+            <item
+                android:id="@+id/menu_liste"
+                android:title="Liste"/>
+            <item
+                android:id="@+id/menu_maj"
+                android:title="Mise à jour"/>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/menu_quitter"
+        android:title="@string/button_quitter" />
+</menu>

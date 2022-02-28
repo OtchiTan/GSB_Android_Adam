@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">GSB</string>
+    <string name="text_accueil">Application de gestion des échantillons de compléments alimentaires</string>
+    <string name="button_ajoutEchantillon">Ajouter un nouvel echantillon</string>
+    <string name="button_listeEchantillon">Liste des echantillons</string>
+    <string name="button_majEchantillon">MAJ d\'un echantillon</string>
+
+    <string name="button_valider">Valider</string>
+    <string name="button_quitter">Quitter</string>
+    <string name="textview_liste_titre">Liste des échantillons :</string>
+
+    <string name="editext_ajout_code">Saisir un code</string>
+    <string name="editext_ajout_libelle">Saisir un libellé</string>
+    <string name="editext_ajout_stock">Saisir un stock</string>
+    <string name="textview_ajout_titre">Saisie d’un échantillon :</string>
+
+    <string name="edittext_maj_quantite">Saisir une quantité</string>
+    <string name="button_maj_supprimer">Supprimer</string>
+    <string name="button_maj_ajouter">Ajouter</string>
+    <string name="textview_maj_titre">Saisie d’un échantillon :</string>
+</resources>
