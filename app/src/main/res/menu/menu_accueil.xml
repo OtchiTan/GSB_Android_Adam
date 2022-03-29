@@ -10,12 +10,6 @@
             <item
                 android:id="@+id/menu_ajout"
                 android:title="Ajout"/>
-            <item
-                android:id="@+id/menu_liste"
-                android:title="Liste"/>
-            <item
-                android:id="@+id/menu_maj"
-                android:title="Mise à jour"/>
         </menu>
     </item>
     <item

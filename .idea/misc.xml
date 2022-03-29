@@ -8,8 +8,9 @@
         <entry key="..\:/Code/Android/GSB_Android_Adam/app/src/main/res/layout/activity_main.xml" value="0.16893115942028986" />
         <entry key="..\:/Code/Android/GSB_Android_Adam/app/src/main/res/layout/activity_maj_echantillon.xml" value="0.16893115942028986" />
         <entry key="..\:/Code/Android/GSB_Android_Adam/app/src/main/res/layout/activity_test.xml" value="0.16893115942028986" />
-        <entry key="..\:/Code/Android/GSB_Android_Adam/app/src/main/res/layout/layout_echantillon.xml" value="0.16893115942028986" />
+        <entry key="..\:/Code/Android/GSB_Android_Adam/app/src/main/res/layout/layout_echantillon.xml" value="0.2" />
         <entry key="..\:/Code/Android/GSB_Android_Adam/app/src/main/res/menu/menu_accueil.xml" value="0.25416666666666665" />
+        <entry key="..\:/Code/Android/GSB_Android_Adam/app/src/main/res/menu/menu_maj.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

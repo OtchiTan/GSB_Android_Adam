@@ -1,13 +1,18 @@
 package com.gsb;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.gsb.database.BdAdapter;
 import com.gsb.modele.Echantillon;
 
@@ -16,7 +21,6 @@ public class MajEchantillon extends AppCompatActivity {
     private EditText etQuantite;
     private Button bSupprimer;
     private Button bAjouter;
-    private Button bQuitter;
 
     private String code;
 
@@ -31,16 +35,8 @@ public class MajEchantillon extends AppCompatActivity {
         etQuantite = findViewById(R.id.et_maj_quantite);
         bSupprimer = findViewById(R.id.b_maj_supprimer);
         bAjouter = findViewById(R.id.b_maj_ajout);
-        bQuitter = findViewById(R.id.b_maj_quitter);
 
         code = getIntent().getExtras().getString("code");
-
-        bQuitter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
 
         bSupprimer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +59,19 @@ public class MajEchantillon extends AppCompatActivity {
 
         Echantillon echantillon = adapter.getEchantillonWithLib(code);
 
-        int newQuantite = Integer.parseInt(echantillon.getQuantite()) + Integer.parseInt(etQuantite.getText().toString());
+        if (etQuantite.getText().toString().matches("")) {
+            Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        int stock = Integer.parseInt(echantillon.getQuantite());
+        int stockToAdd = Integer.parseInt(etQuantite.getText().toString());
+        int newQuantite = stock + stockToAdd;
+
+        if (stockToAdd <= 0) {
+            Toast.makeText(this, "La quantité à ajouter doit être positive", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         echantillon.setQuantite(String.valueOf(newQuantite));
         adapter.updateEchantillon(echantillon.getCode(),echantillon);
@@ -76,10 +84,39 @@ public class MajEchantillon extends AppCompatActivity {
 
         Echantillon echantillon = adapter.getEchantillonWithLib(code);
 
-        int newQuantite = Integer.parseInt(echantillon.getQuantite()) - Integer.parseInt(etQuantite.getText().toString());
+        if (etQuantite.getText().toString().matches("")) {
+            Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_LONG).show();
+            return;
+        }
 
+        int stock = Integer.parseInt(echantillon.getQuantite());
+        int stockToAdd = Integer.parseInt(etQuantite.getText().toString());
+        int newQuantite = stock - stockToAdd;
+
+        if (newQuantite <= 0) {
+            Toast.makeText(this, "Il n'y a pas assez de stock", Toast.LENGTH_LONG).show();
+            return;
+        }
         echantillon.setQuantite(String.valueOf(newQuantite));
         adapter.updateEchantillon(echantillon.getCode(),echantillon);
         finish();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_maj, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.item_maj_supprimer){
+            BdAdapter adapter = new BdAdapter(MajEchantillon.this);
+            adapter.open();
+            adapter.removeEchantillonWithCode(code);
+            adapter.close();
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

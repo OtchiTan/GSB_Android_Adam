@@ -13,19 +13,15 @@
             android:name=".MajEchantillon"
             android:exported="false"
             android:label="Mettre à jour un échantillon"
-            android:parentActivityName=".Accueil" />
-        <activity
-            android:name=".ListeEchantillon"
-            android:exported="false"
-            android:label="Liste des échantillons"
-            android:parentActivityName=".Accueil" />
+            android:parentActivityName=".AjoutEchantillon" />
         <activity
             android:name=".AjoutEchantillon"
             android:exported="false"
             android:label="Ajouter un échantillon"
-            android:parentActivityName=".Accueil" />
+            android:parentActivityName=".MajEchantillon" />
         <activity
             android:name=".Accueil"
+            android:label="GSB"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

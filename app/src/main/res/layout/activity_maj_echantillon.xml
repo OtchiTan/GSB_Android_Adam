@@ -31,47 +31,38 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="409dp"
-        android:layout_height="258dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/b_maj_quitter"
-        app:layout_constraintTop_toBottomOf="@+id/et_maj_quantite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Button
-            android:id="@+id/b_maj_supprimer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/button_maj_supprimer" />
-
-        <Button
-            android:id="@+id/b_maj_ajout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/button_maj_ajouter" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/b_maj_quitter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_quitter"
-        app:layout_constraintBottom_toTopOf="@+id/tv_maj_message"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
-    <TextView
-        android:id="@+id/tv_maj_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/b_maj_quitter" />
+        app:layout_constraintTop_toBottomOf="@+id/et_maj_quantite">
+
+        <Button
+            android:id="@+id/b_maj_supprimer"
+            app:backgroundTint="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@android:drawable/dialog_holo_light_frame"
+            android:text="@string/button_maj_supprimer" />
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"/>
+
+        <Button
+            android:id="@+id/b_maj_ajout"
+            app:backgroundTint="@color/purple_200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_input_add"
+            android:text="@string/button_maj_ajouter"
+            app:maxImageSize="40dp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,7 +11,6 @@ import com.gsb.R;
 import com.gsb.modele.Echantillon;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 public class EchantillonAdapter extends BaseAdapter {
 

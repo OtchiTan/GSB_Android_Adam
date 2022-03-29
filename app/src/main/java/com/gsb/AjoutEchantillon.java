@@ -17,7 +17,6 @@ public class AjoutEchantillon extends AppCompatActivity {
     private EditText etLibelle;
     private EditText etStock;
     private Button bValider;
-    private Button bQuitter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +29,6 @@ public class AjoutEchantillon extends AppCompatActivity {
         etCode = findViewById(R.id.et_ajout_code);
         etLibelle = findViewById(R.id.et_ajout_libelle);
         etStock = findViewById(R.id.et_ajout_stock);
-        bQuitter = findViewById(R.id.b_ajout_quitter);
         bValider = findViewById(R.id.b_ajout_valider);
 
         bValider.setOnClickListener(new View.OnClickListener() {
@@ -39,26 +37,29 @@ public class AjoutEchantillon extends AppCompatActivity {
                 ajoutEchantillon();
             }
         });
-
-        bQuitter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
     }
 
     public void ajoutEchantillon() {
         BdAdapter adapter = new BdAdapter(this);
 
+        if (etStock.getText().toString().matches("") ||
+                etLibelle.getText().toString().matches("") ||
+                etCode.getText().toString().matches("")) {
+            Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        int stock = Integer.parseInt(etStock.getText().toString());
+        if (stock <= 0) {
+            Toast.makeText(this, "La quantité doit être supérieur à 0", Toast.LENGTH_LONG).show();
+            return;
+        }
         adapter.open();
-        Toast.makeText(this,"Ajout",Toast.LENGTH_LONG).show();
         adapter.insererEchantillon(new Echantillon(
                 etCode.getText().toString(),
                 etLibelle.getText().toString(),
                 etStock.getText().toString()
         ));
-        Toast.makeText(this,String.valueOf(adapter.getData().getCount()),Toast.LENGTH_LONG).show();
         adapter.close();
         finish();
     }
