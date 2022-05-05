@@ -26,7 +26,21 @@ public class CreateBdEchantillon extends SQLiteOpenHelper {
         // appelée lorsqu’aucune base n’existe et que la classe utilitaire doit en créer une
         //on créé la table à partir de la requête écrite dans la variable CREATE_BDD
         db.execSQL(CREATE_BDD);
+        db.execSQL("CREATE TABLE composant (" +
+                "code TEXT NOT NULL PRIMARY KEY," +
+                "libelle TEXT NOT NULL" +
+                ")");
+        db.execSQL("CREATE TABLE possede (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "codeEch TEXT NOT NULL," +
+                "codeComp TEXT NOT NULL," +
+                "FOREIGN KEY (codeEch) REFERENCES echantillons(CODE)," +
+                "FOREIGN KEY (codeComp) REFERENCES composant(code)" +
+                ")");
 
+        db.execSQL("INSERT INTO composant (code,libelle) VALUES ('cpm01', 'Chloroquine')");
+        db.execSQL("INSERT INTO composant (code,libelle) VALUES ('cpm02', 'Magnesium')");
+        db.execSQL("INSERT INTO composant (code,libelle) VALUES ('cpm03', 'Sodium')");
     }
 
     @Override // appelée si la version de la base a changé

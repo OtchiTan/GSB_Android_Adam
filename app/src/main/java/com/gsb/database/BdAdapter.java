@@ -10,7 +10,7 @@ import com.gsb.modele.Echantillon;
 import java.util.ArrayList;
 
 public class BdAdapter {
-    static final int VERSION_BDD = 3;
+    static final int VERSION_BDD = 4;
     private static final String NOM_BDD = "gsb.db";
     private static final String TABLE_ECHANT = "echantillons";
     static final String COL_ID = "_id";
@@ -88,6 +88,22 @@ public class BdAdapter {
         return db.rawQuery("SELECT * FROM echantillons", null);
     }
 
+    public Cursor execSQL(String sql){
+        return db.rawQuery(sql, null);
+    }
+
+    public Cursor getComposantWithCode(String code) {
+        Cursor cursor = db.query("composant", new String[] {"code","libelle"},
+                "code" + " LIKE \"" + code + "\"", null, null, null, null);
+        return cursor;
+    }
+
+    public Cursor getAssociations(String codeEch){
+        Cursor cursor = db.query("possede", new String[] {"id","codeEch","codeComp"},
+                "codeEch" + " LIKE \"" + codeEch + "\"", null, null, null, null);
+        return cursor;
+    }
+
     public ArrayList<Echantillon> getEchantillons() {
         ArrayList<Echantillon> echantillons = new ArrayList<>();
 
@@ -98,5 +114,27 @@ public class BdAdapter {
         }
 
         return echantillons;
+    }
+
+    public ArrayList<String> getCompsFromEch(String ech) {
+        ArrayList<String> echantillons = new ArrayList<>();
+
+        Cursor cursor = db.query("possede", new String[] {"id","codeEch","codeComp"},
+                "codeEch" + " LIKE \"" + ech + "\"", null, null, null, null);
+
+        while (cursor.moveToNext()) {
+            echantillons.add(cursor.getString(2));
+        }
+
+        return echantillons;
+    }
+
+    public long insererPossede(String codeEch, String codeComp) {
+        ContentValues values = new ContentValues();
+
+        values.put("codeEch",codeEch);
+        values.put("codeComp",codeComp);
+
+        return db.insert("possede", null, values);
     }
 }

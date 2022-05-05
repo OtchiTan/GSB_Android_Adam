@@ -4,4 +4,10 @@
     <item
         android:id="@+id/item_maj_supprimer"
         android:title="@string/button_maj_supprimer" />
+    <item
+        android:id="@+id/item_maj_ajouterComp"
+        android:title="Ajouter Composant" />
+    <item
+        android:id="@+id/item_maj_supprimerComp"
+        android:title="Supprimer Composant" />
 </menu>

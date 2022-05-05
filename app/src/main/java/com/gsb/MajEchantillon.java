@@ -10,17 +10,26 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.gsb.adapter.ComposantAdapter;
 import com.gsb.database.BdAdapter;
+import com.gsb.modele.Composant;
 import com.gsb.modele.Echantillon;
+import com.gsb.modele.dao.ComposantDao;
+
+import java.util.ArrayList;
 
 public class MajEchantillon extends AppCompatActivity {
 
     private EditText etQuantite;
     private Button bSupprimer;
     private Button bAjouter;
+    private TextView tvTitre;
+    private ListView lvComp;
 
     private String code;
 
@@ -35,8 +44,16 @@ public class MajEchantillon extends AppCompatActivity {
         etQuantite = findViewById(R.id.et_maj_quantite);
         bSupprimer = findViewById(R.id.b_maj_supprimer);
         bAjouter = findViewById(R.id.b_maj_ajout);
+        tvTitre = findViewById(R.id.tv_maj_titre);
+        lvComp = findViewById(R.id.lv_maj_composants);
 
         code = getIntent().getExtras().getString("code");
+
+        tvTitre.setText(getResources().getText(R.string.textview_maj_titre) + " " + code);
+
+        ArrayList<Composant> composants = ComposantDao.getComposantsFromCode(this, code);
+        ComposantAdapter adapter = new ComposantAdapter(composants, this);
+        lvComp.setAdapter(adapter);
 
         bSupprimer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,6 +133,12 @@ public class MajEchantillon extends AppCompatActivity {
             adapter.removeEchantillonWithCode(code);
             adapter.close();
             finish();
+        } else if (item.getItemId() == R.id.item_maj_ajouterComp) {
+            Intent intent = new Intent(MajEchantillon.this, AjouterComp.class);
+            intent.putExtra("code",code);
+            startActivity(intent);
+        } else if (item.getItemId() == R.id.item_maj_ajouterComp) {
+
         }
         return super.onOptionsItemSelected(item);
     }

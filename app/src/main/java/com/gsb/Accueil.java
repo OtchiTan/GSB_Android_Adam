@@ -21,7 +21,9 @@ import android.widget.ListView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.gsb.adapter.EchantillonAdapter;
 import com.gsb.database.BdAdapter;
+import com.gsb.modele.Composant;
 import com.gsb.modele.Echantillon;
+import com.gsb.modele.dao.ComposantDao;
 
 import java.util.ArrayList;
 
@@ -83,7 +85,6 @@ public class Accueil extends AppCompatActivity {
                     cursor.getString(3)
             ));
         }
-
 
         EchantillonAdapter adapter = new EchantillonAdapter(echantillons,getApplicationContext());
         lvEchantillons.setAdapter(adapter);
